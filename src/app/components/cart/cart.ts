@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { CartService } from '../../services/cart'; 
 
 @Component({
   selector: 'app-cart',
-  standalone:true,
-  imports: [],
+  standalone: true,
   templateUrl: './cart.html',
-  styleUrl: './cart.css',
+  styleUrl: './cart.css'
 })
-export class Cart {}
+export class Cart{
+  // Injecting the same service instance
+  public cartService = inject(CartService); 
+}
