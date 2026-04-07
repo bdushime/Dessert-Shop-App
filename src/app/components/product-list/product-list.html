@@ -1,0 +1,13 @@
+<div class="products-container">
+  @for (item of products; track item.name) {
+    <div class="product-card">
+      <img [src]="item.image" [alt]="item.name">
+      <h3>{{ item.name }}</h3>
+      <p>{{ item.category }}</p>
+      <p>Price: ${{ item.price.toFixed(2) }}</p>
+      <button>Add to Cart</button>
+    </div>
+  } @empty {
+    <p>No desserts available today!</p>
+  }
+</div>
