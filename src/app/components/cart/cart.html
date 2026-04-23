@@ -1,1 +1,57 @@
-<p>cart works!</p>
+<div class="cart-container">
+  <!-- Use data binding later to show actual quantity -->
+  <h2 class="cart-title">Your Cart (2)</h2>
+  
+  <div class="cart-items">
+    <!-- Item 1 Mock -->
+    <div class="cart-item">
+      <div class="cart-item-details">
+        <h4 class="cart-item-name">Classic Tiramisu</h4>
+        <div class="cart-item-price-info">
+          <span class="cart-item-qty">1x</span>
+          <span class="cart-item-unit-price">@ $5.50</span>
+          <span class="cart-item-total">$5.50</span>
+        </div>
+      </div>
+      <button class="remove-btn" aria-label="Remove item">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Item 2 Mock -->
+    <div class="cart-item">
+      <div class="cart-item-details">
+        <h4 class="cart-item-name">Vanilla Bean Crème Brûlée</h4>
+        <div class="cart-item-price-info">
+          <span class="cart-item-qty">2x</span>
+          <span class="cart-item-unit-price">@ $7.00</span>
+          <span class="cart-item-total">$14.00</span>
+        </div>
+      </div>
+      <button class="remove-btn" aria-label="Remove item">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="cart-summary">
+    <div class="cart-total-row">
+      <span>Order Total</span>
+      <!-- Bind total price here -->
+      <span class="cart-total-price">$19.50</span>
+    </div>
+    <div class="cart-delivery-note">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E85D04" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      This is a <strong>carbon-neutral</strong> delivery
+    </div>
+    <button class="checkout-btn">Confirm Order</button>
+  </div>
+
+  <!-- Empty state mock. You can show/hide this with *ngIf="cartItems.length === 0" -->
+  <!--
+  <div class="empty-cart">
+    <div class="empty-cart-icon">🍰</div> 
+    <p>Your added items will appear here</p>
+  </div>
+  -->
+</div>

@@ -1,19 +1,10 @@
 <div class="product-grid">
-  @for (item of products; track item.name) {
-    <div class="product-card" [class.highlight]="item.price > 7.50">
-      
-      @if (item.price > 7.50) {
-        <p class="promo-text"> Premium Choice</p>
-      }
-
-      <img [src]="item.image" [alt]="item.name" width="150">
-      <h3>{{ item.name }}</h3>
-      
-      <p>Price: ${{ item.price.toFixed(2) }}</p>
-      
-      <button (click)="handleAddToCart(item)">Add to Cart</button>
-    </div>
-  } @empty {
-    <p>The shop is currently empty!</p>
-  }
+  <!-- This is a mock representing how app-product-item will be used -->
+  <!-- We will design the container here, and the item inside app-product-item. Eventually you will use *ngFor here -->
+  <app-product-item></app-product-item>
+  <app-product-item></app-product-item>
+  <app-product-item></app-product-item>
+  <app-product-item></app-product-item>
+  <app-product-item></app-product-item>
+  <app-product-item></app-product-item>
 </div>
