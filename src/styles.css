@@ -1,21 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@400;600;700&display=swap');
 
 :root {
-  --bg-color: #FDFBFA;
-  --text-main: #2D231E;
-  --text-muted: #8A7A71;
-  --accent-color: #E85D04;
-  --accent-hover: #DC5000;
+  --bg-color: hsl(20, 50%, 98%); /* Rose 50 */
+  --text-main: hsl(14, 65%, 9%); /* Rose 900 */
+  --text-muted: hsl(12, 20%, 44%); /* Rose 500 */
+  --text-light: hsl(7, 20%, 60%); /* Rose 400 */
+  --accent-color: hsl(14, 86%, 42%); /* Red */
+  --accent-hover: hsl(14, 86%, 30%); /* Darker red */
   --surface-color: #FFFFFF;
-  --border-color: #F0E5D8;
+  --border-color: hsl(13, 31%, 94%); /* Rose 100 */
+  --border-color-dark: hsl(14, 25%, 72%); /* Rose 300 */
+  --green: hsl(159, 69%, 38%);
+  
   --radius-sm: 8px;
   --radius-md: 16px;
   --radius-lg: 24px;
-  --shadow-sm: 0 4px 12px rgba(45, 35, 30, 0.05);
-  --shadow-md: 0 8px 24px rgba(45, 35, 30, 0.08);
-  --shadow-hover: 0 16px 32px rgba(45, 35, 30, 0.12);
+  --shadow-sm: 0 4px 12px rgba(38, 15, 8, 0.05);
+  --shadow-md: 0 8px 24px rgba(38, 15, 8, 0.08);
+  --shadow-hover: 0 16px 32px rgba(38, 15, 8, 0.12);
   --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
@@ -26,7 +30,7 @@
 }
 
 body {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Red Hat Text', sans-serif;
   background-color: var(--bg-color);
   color: var(--text-main);
   line-height: 1.6;

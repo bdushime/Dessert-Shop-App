@@ -1,19 +1,4 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { ProductListComponent } from './components/product-list/product-list';
-import { Cart } from './components/cart/cart';
-
-@Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, ProductListComponent, Cart],
-  templateUrl: './app.html', 
-  styleUrl: './app.css'    
-})
-export class AppComponent {
-  title = 'dessert-shop';
-
-  products = [
+[
     {
        "image": {
             "thumbnail": "./assets/images/image-waffle-thumbnail.jpg",
@@ -113,41 +98,4 @@ export class AppComponent {
         "category": "Panna Cotta",
         "price": 6.50
      }
-  ];
-
-cart: any[] = [];
-
-addToCart(product: any){
-  const existingItem = this.cart.find(item => item.product.name === product.name);
-
-  if (existingItem) {
-    existingItem.quantity++;
-  } else {
-    this.cart.push({ 
-      product: product,
-      quantity: 1
-    });
-  }
-}
-
-removeItem(item: any) {
-  this.cart = this.cart.filter(
-    (cartItem) => cartItem.product.name !== item.product.name
-  );
-}
-
-decreaseQuantity(item: any) {
-  const existingItem = this.cart.find(
-    (cartItem) => cartItem.product.name === item.product.name
-  );
-
-  if (!existingItem) return;
-
-  if (existingItem.quantity > 1) {
-    existingItem.quantity--;
-  } else {
-    this.removeItem(item);
-  }
-}
-
-}
+]

@@ -1,20 +1,14 @@
 <div class="app-layout">
-  <header class="app-header max-w-7xl">
-    <div class="logo">
-      <span class="logo-icon">🍰</span>
-      <span class="logo-text">Sugar & Spice</span>
-    </div>
-  </header>
-
   <main class="max-w-7xl app-main">
-    <h1 class="page-title">Handcrafted Desserts</h1>
+    <h1 class="page-title">Desserts</h1>
     <div class="shop-grid">
       <section class="products-section">
-        <app-product-list></app-product-list>
+        <app-product-list [products]="products" [cart]="cart" (addToCart)="addToCart($event)" (decrease)="decreaseQuantity($event)"></app-product-list>
       </section>
 
       <aside class="cart-section">
-        <app-cart></app-cart>
+        <app-cart [items]="cart" (remove)="removeItem($event)" (decrease)="decreaseQuantity($event)"></app-cart>  
+
       </aside>
     </div>
   </main>

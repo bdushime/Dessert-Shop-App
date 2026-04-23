@@ -1,15 +1,29 @@
-<div class="product-card">
+<div class="product-card" [class.active]="quantity > 0">
   <div class="product-image-container">
-    <div class="product-image"></div>
-    <!-- Button to trigger Add to Cart (You'll bind click events here) -->
-    <button class="add-to-cart-btn">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/><path d="M20 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-      Add to Cart
+    <picture>
+      <source media="(min-width: 1024px)" [srcset]="product.image.desktop">
+      <source media="(min-width: 768px)" [srcset]="product.image.tablet">
+      <img [src]="product.image.mobile" alt="{{product.name}}" class="product-image" [class.border-active]="quantity > 0">
+    </picture>
+    
+    <button class="add-to-cart-btn" *ngIf="quantity === 0" (click)="addToCart.emit(product)">
+      <img src="assets/images/icon-add-to-cart.svg" alt="">
+      <span>Add to Cart</span>
     </button>
+
+    <div class="active-qty-btn" *ngIf="quantity > 0">
+      <button class="qty-btn" (click)="decrease.emit(product)" aria-label="Decrease quantity">
+        <img src="assets/images/icon-decrement-quantity.svg" alt="-">
+      </button>
+      <span class="qty-num">{{quantity}}</span>
+      <button class="qty-btn" (click)="addToCart.emit(product)" aria-label="Increase quantity">
+        <img src="assets/images/icon-increment-quantity.svg" alt="+">
+      </button>
+    </div>
   </div>
   <div class="product-info">
-    <p class="product-category">Waffle</p> <!-- Bind Category -->
-    <h3 class="product-name">Waffle with Berries</h3> <!-- Bind Name -->
-    <p class="product-price">$6.50</p> <!-- Bind Price -->
+    <p class="product-category">{{product.category}}</p> 
+    <h3 class="product-name">{{product.name}}</h3> 
+    <p class="product-price">{{product.price | currency}}</p> 
   </div>
 </div>
