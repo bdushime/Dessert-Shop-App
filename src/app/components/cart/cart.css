@@ -2,8 +2,8 @@
   background-color: var(--surface-color);
   border-radius: var(--radius-sm);
   padding: 1.5rem;
-  box-shadow: none; /* Figma prototype usually has clean flats, it's just white bg */
-} /* Wait, typical figma design might have no shadow, just white bg on cream. I'll stick to a very faint shadow or no shadow */
+  box-shadow: none; 
+} 
 
 .cart-container {
   background-color: var(--surface-color);
@@ -108,7 +108,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background-color: var(--border-color); /* Light greyish #F4EDEA */
+  background-color: var(--border-color); 
   padding: 1rem;
   border-radius: var(--radius-sm);
   font-size: 0.875rem;

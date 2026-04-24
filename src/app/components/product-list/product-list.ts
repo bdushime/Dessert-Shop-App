@@ -22,7 +22,7 @@ export class ProductListComponent {
   }
 
   onDecrease(product: any) {
-    this.decrease.emit({ product }); // wrap in object so it matches item.product in decreaseQuantity
+    this.decrease.emit({ product }); 
   }
 
   getQuantity(product: any): number {
