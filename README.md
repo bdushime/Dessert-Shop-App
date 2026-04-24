@@ -1,59 +1,79 @@
-# DessertShop
+#  Dessert Shop App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.6.
+Welcome to the **Dessert Shop App**, a modern, responsive web application built to demonstrate fundamental and advanced Angular concepts. This project showcases dynamic data binding, parent-child component architecture, and pixel-perfect UI cloning from Figma.
 
-## Development server
+##  Live Demo
+> **[]**
 
-To start a local development server, run:
+---
 
+##  Features
+- **Dynamic Shopping Cart**: Instantly tracks selected items, calculates the total price, and allows users to increase, decrease, or remove quantities.
+- **Component Architecture**: Built using a strict, maintainable file structure including `product-list`, `product-item`, and `cart` components.
+- **Top-down State Management**: Utilizes Angular's `@Input()` and `@Output()` to pass data securely from parent to child components and broadcast user actions upward without side-effects.
+- **Responsive Design**: Designed Mobile-First using modern CSS Grid and Flexbox. Automatically adapts the layout to mobile, tablet, and desktop screens.
+- **Adaptive Image Rendering**: Employs the HTML5 `<picture>` tag to dynamically load different image sizes (`mobile`/`tablet`/`desktop`) based on viewport width, optimizing performance and bandwidth.
+- **Angular Directives & Pipes**: Heavily utilizes structured directives (`*ngIf`, `*ngFor`), attribute binding (`[class]`), and built-in pipes (`| currency`) for dynamic UI rendering.
+
+---
+
+##  Tech Stack
+- **Framework**: [Angular](https://angular.io/) (v17+)
+- **Languages**: TypeScript, HTML5, CSS3
+- **Styling**: Vanilla CSS (CSS Custom Properties, Grid, Flexbox)
+
+---
+
+## 💻 Getting Started Locally
+
+To get a local copy up and running, follow these simple steps.
+
+### Prerequisites
+Make sure you have Node.js and the Angular CLI installed.
 ```bash
-ng serve
+npm install -g @angular/cli
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### Installation
+1. Clone the repo
+   ```bash
+   git clone [Insert your GitHub Repo URL here]
+   ```
+2. Navigate into the project directory
+   ```bash
+   cd dessert-shop
+   ```
+3. Install NPM packages
+   ```bash
+   npm install
+   ```
+4. Run the development server
+   ```bash
+   ng serve
+   ```
+5. Open your browser and visit: `http://localhost:4200/`
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+## 📄 Project Structure
+This repository reflects standard Angular best practices:
+```text
+src/
+├── app/
+│   ├── components/
+│   │   ├── cart/             # Shopping cart UI and calculations
+│   │   ├── product-item/     # Individual product card UI and state
+│   │   └── product-list/     # Maps over the JSON data array
+│   ├── app.ts                # Parent state controller
+│   └── app.html              # Main layout Grid
+├── public/
+│   └── assets/               # Product images and SVG icons
+├── styles.css                # Global CSS variables and typography
+└── data.json                 # Core product database
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+##  Acknowledgments
+- Design provided by [Frontend Mentor](https://www.frontendmentor.io/).
+- Developed as part of an Angular fundamentals lab.
