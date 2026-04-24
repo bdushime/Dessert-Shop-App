@@ -3,7 +3,7 @@
 Welcome to the **Dessert Shop App**, a modern, responsive web application built to demonstrate fundamental and advanced Angular concepts. This project showcases dynamic data binding, parent-child component architecture, and pixel-perfect UI cloning from Figma.
 
 ##  Live Demo
-> **[Insert your deployed Netlify/Vercel URL here]**
+> **[https://soft-basbousa-7ef724.netlify.app/]**
 
 ---
 
