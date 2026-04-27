@@ -3,12 +3,11 @@
     <h1 class="page-title">Desserts</h1>
     <div class="shop-grid">
       <section class="products-section">
-        <app-product-list [products]="products" [cart]="cart" (addToCart)="addToCart($event)" (decrease)="decreaseQuantity($event)"></app-product-list>
+        <app-product-list [products]="products"></app-product-list>
       </section>
 
       <aside class="cart-section">
-        <app-cart [items]="cart" (remove)="removeItem($event)" (decrease)="decreaseQuantity($event)"></app-cart>  
-
+        <app-cart></app-cart>  
       </aside>
     </div>
   </main>

@@ -1,16 +1,16 @@
 <div class="cart-container">
 
-  <h2 class="cart-title">Your Cart ({{items.length}})</h2>
+  <h2 class="cart-title">Your Cart ({{cartService.items.length}})</h2>
   
   <div class="cart-items">
 
-    <div *ngIf="items.length === 0" class="empty-cart">
+    <div *ngIf="cartService.items.length === 0" class="empty-cart">
       <img src="assets/images/illustration-empty-cart.svg" alt="Empty cart illustration">
       <p>Your added items will appear here</p>
     </div>
 
     <!-- Active Cart Items -->
-    <div *ngFor="let item of items" class="cart-item">
+    <div *ngFor="let item of cartService.items" class="cart-item">
       <div class="cart-item-details">
         <h4 class="cart-item-name">{{item.product.name}}</h4>
 
@@ -21,24 +21,28 @@
         </div>
       </div>
 
-      <button class="remove-btn" (click)="remove.emit(item)" aria-label="Remove item">
+      <button class="remove-btn" (click)="cartService.removeItem(item)" aria-label="Remove item">
         <img src="assets/images/icon-remove-item.svg" alt="Remove {{item.product.name}}">
       </button>
     </div>
 
   </div>
 
-  <div class="cart-summary" *ngIf="items.length > 0">
+  <div class="cart-summary" *ngIf="cartService.items.length > 0">
     <div class="cart-total-row">
       <span>Order Total</span>
-      <span class="cart-total-price">{{getTotal() | currency}}</span>
+      <span class="cart-total-price">{{cartService.getTotal() | currency}}</span>
     </div>
     
     <div class="cart-delivery-note">
       <img src="assets/images/icon-carbon-neutral.svg" alt="Carbon neutral">
       <span>This is a <strong>carbon-neutral</strong> delivery</span>
     </div>
-    <button class="checkout-btn">Confirm Order</button>
+    
+    <div class="cart-actions">
+      <button class="checkout-btn">Confirm Order</button>
+      <button class="clear-btn" (click)="cartService.clearCart()">Clear Cart</button>
+    </div>
   </div>
 
 </div>

@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-product-item',
@@ -10,8 +11,12 @@ import { CommonModule } from '@angular/common';
 })
 export class ProductItem {
   @Input() product: any;
-  @Input() quantity: number = 0;
   
-  @Output() addToCart = new EventEmitter<any>();
-  @Output() decrease = new EventEmitter<any>();
+  // Directly inject the global Cart Service!
+  cartService = inject(CartService);
+
+  // Dynamically calculate our own quantity without needing the parent component
+  get quantity(): number {
+    return this.cartService.getQuantity(this.product);
+  }
 }

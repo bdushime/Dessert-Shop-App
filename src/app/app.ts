@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ProductListComponent } from './components/product-list/product-list';
 import { Cart } from './components/cart/cart';
+import { ProductService } from './services/product.service';
 
 @Component({
   selector: 'app-root',
@@ -12,142 +13,9 @@ import { Cart } from './components/cart/cart';
 })
 export class AppComponent {
   title = 'dessert-shop';
+  products: any[] = [];
 
-  products = [
-    {
-       "image": {
-            "thumbnail": "./assets/images/image-waffle-thumbnail.jpg",
-            "mobile": "./assets/images/image-waffle-mobile.jpg",
-            "tablet": "./assets/images/image-waffle-tablet.jpg",
-            "desktop": "./assets/images/image-waffle-desktop.jpg"
-       },
-       "name": "Waffle with Berries",
-       "category": "Waffle",
-       "price": 6.50
-    },
-    {
-        "image": {
-            "thumbnail": "./assets/images/image-creme-brulee-thumbnail.jpg",
-            "mobile": "./assets/images/image-creme-brulee-mobile.jpg",
-            "tablet": "./assets/images/image-creme-brulee-tablet.jpg",
-            "desktop": "./assets/images/image-creme-brulee-desktop.jpg"
-        },
-        "name": "Vanilla Bean Crème Brûlée",
-        "category": "Crème Brûlée",
-        "price": 7.00
-     },
-     {
-        "image": {
-            "thumbnail": "./assets/images/image-macaron-thumbnail.jpg",
-            "mobile": "./assets/images/image-macaron-mobile.jpg",
-            "tablet": "./assets/images/image-macaron-tablet.jpg",
-            "desktop": "./assets/images/image-macaron-desktop.jpg"
-        },
-        "name": "Macaron Mix of Five",
-        "category": "Macaron",
-        "price": 8.00
-     },
-     {
-        "image": {
-            "thumbnail": "./assets/images/image-tiramisu-thumbnail.jpg",
-            "mobile": "./assets/images/image-tiramisu-mobile.jpg",
-            "tablet": "./assets/images/image-tiramisu-tablet.jpg",
-            "desktop": "./assets/images/image-tiramisu-desktop.jpg"
-        },
-        "name": "Classic Tiramisu",
-        "category": "Tiramisu",
-        "price": 5.50
-     },
-     {
-        "image": {
-            "thumbnail": "./assets/images/image-baklava-thumbnail.jpg",
-            "mobile": "./assets/images/image-baklava-mobile.jpg",
-            "tablet": "./assets/images/image-baklava-tablet.jpg",
-            "desktop": "./assets/images/image-baklava-desktop.jpg"
-        },
-        "name": "Pistachio Baklava",
-        "category": "Baklava",
-        "price": 4.00
-     },
-     {
-        "image": {
-            "thumbnail": "./assets/images/image-meringue-thumbnail.jpg",
-            "mobile": "./assets/images/image-meringue-mobile.jpg",
-            "tablet": "./assets/images/image-meringue-tablet.jpg",
-            "desktop": "./assets/images/image-meringue-desktop.jpg"
-        },
-        "name": "Lemon Meringue Pie",
-        "category": "Pie",
-        "price": 5.00
-     },
-     {
-        "image": {
-            "thumbnail": "./assets/images/image-cake-thumbnail.jpg",
-            "mobile": "./assets/images/image-cake-mobile.jpg",
-            "tablet": "./assets/images/image-cake-tablet.jpg",
-            "desktop": "./assets/images/image-cake-desktop.jpg"
-        },
-        "name": "Red Velvet Cake",
-        "category": "Cake",
-        "price": 4.50
-     },
-     {
-        "image": {
-            "thumbnail": "./assets/images/image-brownie-thumbnail.jpg",
-            "mobile": "./assets/images/image-brownie-mobile.jpg",
-            "tablet": "./assets/images/image-brownie-tablet.jpg",
-            "desktop": "./assets/images/image-brownie-desktop.jpg"
-        },
-        "name": "Salted Caramel Brownie",
-        "category": "Brownie",
-        "price": 4.50
-     },
-     {
-        "image": {
-            "thumbnail": "./assets/images/image-panna-cotta-thumbnail.jpg",
-            "mobile": "./assets/images/image-panna-cotta-mobile.jpg",
-            "tablet": "./assets/images/image-panna-cotta-tablet.jpg",
-            "desktop": "./assets/images/image-panna-cotta-desktop.jpg"
-        },
-        "name": "Vanilla Panna Cotta",
-        "category": "Panna Cotta",
-        "price": 6.50
-     }
-  ];
-
-cart: any[] = [];
-
-addToCart(product: any){
-  const existingItem = this.cart.find(item => item.product.name === product.name);
-
-  if (existingItem) {
-    existingItem.quantity++;
-  } else {
-    this.cart.push({ 
-      product: product,
-      quantity: 1
-    });
+  constructor(private productService: ProductService) {
+    this.products = this.productService.getProducts();
   }
-}
-
-removeItem(item: any) {
-  this.cart = this.cart.filter(
-    (cartItem) => cartItem.product.name !== item.product.name
-  );
-}
-
-decreaseQuantity(item: any) {
-  const existingItem = this.cart.find(
-    (cartItem) => cartItem.product.name === item.product.name
-  );
-
-  if (!existingItem) return;
-
-  if (existingItem.quantity > 1) {
-    existingItem.quantity--;
-  } else {
-    this.removeItem(item);
-  }
-}
-
 }
