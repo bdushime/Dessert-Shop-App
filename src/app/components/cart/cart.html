@@ -9,7 +9,7 @@
       <p>Your added items will appear here</p>
     </div>
 
-    <!-- Active Cart Items -->
+    
     <div *ngFor="let item of items" class="cart-item">
       <div class="cart-item-details">
         <h4 class="cart-item-name">{{item.product.name}}</h4>
@@ -38,7 +38,7 @@
       <img src="assets/images/icon-carbon-neutral.svg" alt="Carbon neutral">
       <span>This is a <strong>carbon-neutral</strong> delivery</span>
     </div>
-    <button class="checkout-btn">Confirm Order</button>
+    <button class="checkout-btn" (click)="confirm.emit()">Confirm Order</button>
   </div>
 
 </div>

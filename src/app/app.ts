@@ -1,17 +1,21 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { ProductListComponent } from './components/product-list/product-list';
 import { Cart } from './components/cart/cart';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ProductListComponent, Cart],
+  imports: [RouterOutlet, CommonModule, ProductListComponent, Cart],
   templateUrl: './app.html', 
   styleUrl: './app.css'    
 })
 export class AppComponent {
   title = 'dessert-shop';
+
+  showConfirmation = false;
+  confirmedItems: any[] = [];
 
   products = [
     {
@@ -148,6 +152,25 @@ decreaseQuantity(item: any) {
   } else {
     this.removeItem(item);
   }
+}
+
+confirmOrder() {
+
+  this.confirmedItems = this.cart.map(item => ({ ...item }));
+  this.showConfirmation = true;
+}
+
+getConfirmedTotal(): number {
+  return this.confirmedItems.reduce(
+    (total, item) => total + item.product.price * item.quantity,
+    0
+  );
+}
+
+startNewOrder() {
+  this.cart = [];
+  this.confirmedItems = [];
+  this.showConfirmation = false;
 }
 
 }

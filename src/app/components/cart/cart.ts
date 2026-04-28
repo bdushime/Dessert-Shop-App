@@ -16,6 +16,8 @@ export class Cart{
   @Output() remove = new EventEmitter<any>();
 
   @Output() decrease = new EventEmitter<any>();
+
+  @Output() confirm = new EventEmitter<void>();
   
  getTotal(): number {
   return this.items.reduce(
