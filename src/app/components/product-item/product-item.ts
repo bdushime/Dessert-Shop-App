@@ -12,10 +12,9 @@ import { CartService } from '../../services/cart.service';
 export class ProductItem {
   @Input() product: any;
   
-  // Directly inject the global Cart Service!
+
   cartService = inject(CartService);
 
-  // Dynamically calculate our own quantity without needing the parent component
   get quantity(): number {
     return this.cartService.getQuantity(this.product);
   }

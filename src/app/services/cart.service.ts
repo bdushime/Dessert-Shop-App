@@ -11,6 +11,10 @@ export class CartService {
   
   items: any[] = [];
 
+
+  showConfirmation = false;
+  confirmedItems: any[] = [];
+
   constructor() {
     this.loadCart();
   }
@@ -36,7 +40,7 @@ export class CartService {
       this.logger.log(`Decreased quantity of ${item.product.name}.`);
     } else {
       this.removeItem(item);
-      return; // removeItem calls saveCart already
+      return; 
     }
     this.saveCart();
   }
@@ -54,6 +58,27 @@ export class CartService {
 
   getTotal(): number {
     return this.items.reduce((total, item) => total + this.utils.calculateSubtotal(item.product.price, item.quantity), 0);
+  }
+
+  confirmOrder() {
+    
+    this.confirmedItems = this.items.map(item => ({ ...item }));
+    this.showConfirmation = true;
+    this.logger.log('Order confirmed.');
+  }
+
+  getConfirmedTotal(): number {
+    return this.confirmedItems.reduce(
+      (total, item) => total + this.utils.calculateSubtotal(item.product.price, item.quantity),
+      0
+    );
+  }
+
+  startNewOrder() {
+    this.clearCart();
+    this.confirmedItems = [];
+    this.showConfirmation = false;
+    this.logger.log('New order started.');
   }
 
   
