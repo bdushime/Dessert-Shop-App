@@ -3,17 +3,17 @@
     <h1 class="page-title">Desserts</h1>
     <div class="shop-grid">
       <section class="products-section">
-        <app-product-list [products]="products" [cart]="cart" (addToCart)="addToCart($event)" (decrease)="decreaseQuantity($event)"></app-product-list>
+        <app-product-list [products]="cartService.products" [cart]="cartService.cart" (addToCart)="cartService.addToCart($event)" (decrease)="cartService.decreaseQuantity($event)"></app-product-list>
       </section>
 
       <aside class="cart-section">
-        <app-cart [items]="cart" (remove)="removeItem($event)" (decrease)="decreaseQuantity($event)" (confirm)="confirmOrder()"></app-cart>  
+        <app-cart [items]="cartService.cart" (remove)="cartService.removeItem($event)" (decrease)="cartService.decreaseQuantity($event)" (confirm)="cartService.confirmOrder()"></app-cart>  
       </aside>
     </div>
   </main>
 </div>
 
-<div class="modal-overlay" *ngIf="showConfirmation" (click)="startNewOrder()">
+<div class="modal-overlay" *ngIf="cartService.showConfirmation" (click)="cartService.startNewOrder()">
   <div class="modal-content" (click)="$event.stopPropagation()">
 
     <img src="assets/images/icon-order-confirmed.svg" alt="Order confirmed" class="modal-icon">
@@ -21,7 +21,7 @@
     <p class="modal-subtitle">We hope you enjoy your food!</p>
 
     <div class="modal-items-list">
-      <div *ngFor="let item of confirmedItems" class="modal-item">
+      <div *ngFor="let item of cartService.confirmedItems" class="modal-item">
         <div class="modal-item-left">
           <img [src]="item.product.image.thumbnail" [alt]="item.product.name" class="modal-item-thumbnail">
           <div class="modal-item-info">
@@ -37,10 +37,10 @@
 
       <div class="modal-total-row">
         <span>Order Total</span>
-        <span class="modal-total-price">{{getConfirmedTotal() | currency}}</span>
+        <span class="modal-total-price">{{cartService.getConfirmedTotal() | currency}}</span>
       </div>
     </div>
 
-    <button class="modal-btn" (click)="startNewOrder()">Start New Order</button>
+    <button class="modal-btn" (click)="cartService.startNewOrder()">Start New Order</button>
   </div>
 </div>

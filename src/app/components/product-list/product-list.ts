@@ -26,7 +26,7 @@ export class ProductListComponent {
   }
 
   getQuantity(product: any): number {
-    const item = this.cart.find(c => c.product.name === product.name);
+    const item = this.cart.find(c => c.product.id === product.id);
     return item ? item.quantity : 0;
   }
 }
