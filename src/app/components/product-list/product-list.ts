@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { ProductItem } from '../product-item/product-item';
 import { NgFor } from '@angular/common';
 
+import { Product } from '../../models/product.model';
+
 @Component({
   selector: 'app-product-list',
   imports: [ProductItem, NgFor],
@@ -10,6 +12,9 @@ import { NgFor } from '@angular/common';
   styleUrl: './product-list.css'
 })
 export class ProductListComponent {
-  @Input() products: any[] = [];
+  @Input() products: Product[] = [];
 
+  trackByProduct(index: number, product: Product): number {
+    return product.id;
+  }
 }

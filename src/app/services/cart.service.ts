@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { LoggerService } from './logger.service';
 import { UtilityService } from './utility.service';
+import { Product, CartItem } from '../models/product.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,18 +10,18 @@ export class CartService {
   private logger = inject(LoggerService);
   private utils = inject(UtilityService);
   
-  items: any[] = [];
+  items: CartItem[] = [];
 
 
   showConfirmation = false;
-  confirmedItems: any[] = [];
+  confirmedItems: CartItem[] = [];
 
   constructor() {
     this.loadCart();
   }
 
-  addToCart(product: any) {
-    const existingItem = this.items.find(item => item.product.name === product.name);
+  addToCart(product: Product) {
+    const existingItem = this.items.find(item => item.product.id === product.id);
     if (existingItem) {
       existingItem.quantity++;
     } else {
@@ -31,28 +32,28 @@ export class CartService {
     this.saveCart();
   }
 
-  decreaseQuantity(item: any) {
-    const existingItem = this.items.find(c => c.product.name === item.product.name);
+  decreaseQuantity(product: Product) {
+    const existingItem = this.items.find(c => c.product.id === product.id);
     if (!existingItem) return;
 
     if (existingItem.quantity > 1) {
       existingItem.quantity--;
-      this.logger.log(`Decreased quantity of ${item.product.name}.`);
+      this.logger.log(`Decreased quantity of ${product.name}.`);
     } else {
-      this.removeItem(item);
+      this.removeItem(product);
       return; 
     }
     this.saveCart();
   }
 
-  removeItem(item: any) {
-    this.items = this.items.filter(c => c.product.name !== item.product.name);
-    this.logger.log(`Removed ${item.product.name} from cart.`);
+  removeItem(product: Product) {
+    this.items = this.items.filter(c => c.product.id !== product.id);
+    this.logger.log(`Removed ${product.name} from cart.`);
     this.saveCart();
   }
 
-  getQuantity(product: any): number {
-    const item = this.items.find(c => c.product.name === product.name);
+  getQuantity(product: Product): number {
+    const item = this.items.find(c => c.product.id === product.id);
     return item ? item.quantity : 0;
   }
 

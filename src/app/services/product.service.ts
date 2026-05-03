@@ -1,12 +1,26 @@
 import { Injectable } from '@angular/core';
+import { Product } from '../models/product.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  private products = [
+  private products: Product[] = [
+      {
+       "id": 1,
+       "image": {
+            "thumbnail": "./assets/images/image-waffle-thumbnail.jpg",
+            "mobile": "./assets/images/image-waffle-mobile.jpg",
+            "tablet": "./assets/images/image-waffle-tablet.jpg",
+            "desktop": "./assets/images/image-waffle-desktop.jpg"
+       },
+       "name": "Waffle with Berries",
+       "category": "Waffle",
+       "price": 6.50
+    },   
     {
+       "id": 2,
        "image": {
             "thumbnail": "./assets/images/image-waffle-thumbnail.jpg",
             "mobile": "./assets/images/image-waffle-mobile.jpg",
@@ -18,6 +32,7 @@ export class ProductService {
        "price": 6.50
     },
     {
+        "id": 3,
         "image": {
             "thumbnail": "./assets/images/image-creme-brulee-thumbnail.jpg",
             "mobile": "./assets/images/image-creme-brulee-mobile.jpg",
@@ -29,6 +44,7 @@ export class ProductService {
         "price": 7.00
      },
      {
+        "id": 4,
         "image": {
             "thumbnail": "./assets/images/image-macaron-thumbnail.jpg",
             "mobile": "./assets/images/image-macaron-mobile.jpg",
@@ -40,6 +56,7 @@ export class ProductService {
         "price": 8.00
      },
      {
+        "id": 5,
         "image": {
             "thumbnail": "./assets/images/image-tiramisu-thumbnail.jpg",
             "mobile": "./assets/images/image-tiramisu-mobile.jpg",
@@ -51,6 +68,7 @@ export class ProductService {
         "price": 5.50
      },
      {
+        "id": 6,
         "image": {
             "thumbnail": "./assets/images/image-baklava-thumbnail.jpg",
             "mobile": "./assets/images/image-baklava-mobile.jpg",
@@ -62,6 +80,7 @@ export class ProductService {
         "price": 4.00
      },
      {
+        "id": 7,
         "image": {
             "thumbnail": "./assets/images/image-meringue-thumbnail.jpg",
             "mobile": "./assets/images/image-meringue-mobile.jpg",
@@ -73,6 +92,7 @@ export class ProductService {
         "price": 5.00
      },
      {
+        "id": 8,
         "image": {
             "thumbnail": "./assets/images/image-cake-thumbnail.jpg",
             "mobile": "./assets/images/image-cake-mobile.jpg",
@@ -84,6 +104,7 @@ export class ProductService {
         "price": 4.50
      },
      {
+        "id": 9,
         "image": {
             "thumbnail": "./assets/images/image-brownie-thumbnail.jpg",
             "mobile": "./assets/images/image-brownie-mobile.jpg",
@@ -95,6 +116,7 @@ export class ProductService {
         "price": 4.50
      },
      {
+        "id": 10,
         "image": {
             "thumbnail": "./assets/images/image-panna-cotta-thumbnail.jpg",
             "mobile": "./assets/images/image-panna-cotta-mobile.jpg",
@@ -107,7 +129,7 @@ export class ProductService {
      }
   ];
 
-  getProducts() {
+  getProducts(): Product[] {
     return this.products;
   }
 }

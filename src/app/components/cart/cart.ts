@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../services/cart.service';
+import { Product, CartItem } from '../../models/product.model';
 
 @Component({
   selector: 'app-cart',
@@ -12,4 +13,8 @@ import { CartService } from '../../services/cart.service';
 export class Cart {
 
   cartService = inject(CartService);
+
+  trackByItem(index: number, item: CartItem): number {
+    return item.product.id;
+  }
 }

@@ -10,7 +10,7 @@
     </div>
 
     <!-- Active Cart Items -->
-    <div *ngFor="let item of cartService.items" class="cart-item">
+    <div *ngFor="let item of cartService.items; trackBy: trackByItem" class="cart-item">
       <div class="cart-item-details">
         <h4 class="cart-item-name">{{item.product.name}}</h4>
 
@@ -21,7 +21,7 @@
         </div>
       </div>
 
-      <button class="remove-btn" (click)="cartService.removeItem(item)" aria-label="Remove item">
+      <button class="remove-btn" (click)="cartService.removeItem(item.product)" aria-label="Remove item">
         <img src="assets/images/icon-remove-item.svg" alt="Remove {{item.product.name}}">
       </button>
     </div>
@@ -56,7 +56,7 @@
     <p class="modal-subtitle">We hope you enjoy your food!</p>
 
     <div class="modal-items-list">
-      <div *ngFor="let item of cartService.confirmedItems" class="modal-item">
+      <div *ngFor="let item of cartService.confirmedItems; trackBy: trackByItem" class="modal-item">
         <div class="modal-item-left">
           <img [src]="item.product.image.thumbnail" [alt]="item.product.name" class="modal-item-thumbnail">
           <div class="modal-item-info">
