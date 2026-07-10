@@ -1,5 +1,8 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CartService } from '../../services/cart.service';
+
+import { Product } from '../../models/product.model';
 
 @Component({
   selector: 'app-product-item',
@@ -9,9 +12,12 @@ import { CommonModule } from '@angular/common';
   standalone: true
 })
 export class ProductItem {
-  @Input() product: any;
-  @Input() quantity: number = 0;
+  @Input() product!: Product;
   
-  @Output() addToCart = new EventEmitter<any>();
-  @Output() decrease = new EventEmitter<any>();
+
+  cartService = inject(CartService);
+
+  get quantity(): number {
+    return this.cartService.getQuantity(this.product);
+  }
 }

@@ -1,29 +1,18 @@
-import { Component, inject, Input, Output, EventEmitter } from '@angular/core'; 
-import { CartService } from '../../services/cart'; 
-import {ProductItem} from '../product-item/product-item';
+import { Component, Input } from '@angular/core'; 
+import { ProductItem } from '../product-item/product-item';
 import { NgFor } from '@angular/common';
+
+import { Product } from '../../models/product.model';
+
 @Component({
   selector: 'app-product-list',
-  imports:[ProductItem,NgFor],
+  imports: [ProductItem, NgFor],
   standalone: true,
   templateUrl: './product-list.html',
   styleUrl: './product-list.css'
 })
 export class ProductListComponent {
-  
-  @Input() products: any[] = [];
-  @Input() cart: any[] = [];
-
-  @Output() addToCart = new EventEmitter<any>();
-  @Output() decrease = new EventEmitter<any>();
-
-  onAddToCart(product: any){
-    this.addToCart.emit(product);
-  }
-
-  onDecrease(product: any) {
-    this.decrease.emit({ product }); 
-  }
+  @Input() products: Product[] = [];
 
   getQuantity(product: any): number {
     const item = this.cart.find(c => c.product.id === product.id);

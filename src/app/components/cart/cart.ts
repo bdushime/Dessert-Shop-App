@@ -1,19 +1,18 @@
-import { Component, inject , Input, Output, EventEmitter} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CartService } from '../../services/cart'; 
+import { CartService } from '../../services/cart.service';
+import { Product, CartItem } from '../../models/product.model';
 
 @Component({
   selector: 'app-cart',
-  standalone: true,
   imports: [CommonModule],
+  standalone: true,
   templateUrl: './cart.html',
   styleUrl: './cart.css'
 })
-export class Cart{
-  
-  @Input() items: any[] = [];
+export class Cart {
 
-  @Output() remove = new EventEmitter<any>();
+  cartService = inject(CartService);
 
   @Output() decrease = new EventEmitter<any>();
 
