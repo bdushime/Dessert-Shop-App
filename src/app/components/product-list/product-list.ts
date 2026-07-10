@@ -14,7 +14,8 @@ import { Product } from '../../models/product.model';
 export class ProductListComponent {
   @Input() products: Product[] = [];
 
-  trackByProduct(index: number, product: Product): number {
-    return product.id;
+  getQuantity(product: any): number {
+    const item = this.cart.find(c => c.product.id === product.id);
+    return item ? item.quantity : 0;
   }
 }

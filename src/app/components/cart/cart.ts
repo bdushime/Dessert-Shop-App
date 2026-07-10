@@ -14,7 +14,14 @@ export class Cart {
 
   cartService = inject(CartService);
 
-  trackByItem(index: number, item: CartItem): number {
-    return item.product.id;
-  }
+  @Output() decrease = new EventEmitter<any>();
+
+  @Output() confirm = new EventEmitter<void>();
+  
+ getTotal(): number {
+  return this.items.reduce(
+    (total, item) => total + item.product.price * item.quantity,
+    0
+  );
+}
 }
